@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}Company Registration{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card mt-3">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">🏢 Company Registration</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.company_name.label }}
+                        {{ form.company_name(class="form-control") }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.email.label }}
+                        {{ form.email(class="form-control") }}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.password.label }}
+                            {{ form.password(class="form-control") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.confirm_password.label }}
+                            {{ form.confirm_password(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        {{ form.hr_contact.label }}
+                        {{ form.hr_contact(class="form-control") }}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            {{ form.hr_phone.label }}
+                            {{ form.hr_phone(class="form-control") }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            {{ form.website.label }}
+                            {{ form.website(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        {{ form.company_description.label }}
+                        {{ form.company_description(class="form-control", rows="4") }}
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}Applications{% endblock %}
+{% block content %}
+<h2 class="mb-4">Applications for {{ drive.job_title }}</h2>
+<div class="card">
+    <table class="table table-striped mb-0">
+        <thead class="table-dark">
+            <tr>
+                <th>Student</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for app in applications.items %}
+            <tr>
+                <td>{{ app.student.name }}</td>
+                <td>{{ app.student.email }}</td>
+                <td><span class="badge bg-info">{{ app.application_status }}</span></td>
+                <td>
+                    <form method="POST" style="display:inline;" action="{{ url_for('company.update_app_status', app_id=app.id) }}">
+                        <select name="status" class="form-select form-select-sm d-inline-block w-auto">
+                            <option value="Applied" {% if app.application_status == 'Applied' %}selected{% endif %}>Applied</option>
+                            <option value="Shortlisted" {% if app.application_status == 'Shortlisted' %}selected{% endif %}>Shortlisted</option>
+                            <option value="Selected" {% if app.application_status == 'Selected' %}selected{% endif %}>Selected</option>
+                            <option value="Rejected" {% if app.application_status == 'Rejected' %}selected{% endif %}>Rejected</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

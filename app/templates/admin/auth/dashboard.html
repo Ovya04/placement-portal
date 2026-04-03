@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">
+        <i class="fas fa-chart-line"></i> Admin Dashboard
+    </h2>
+
+    <!-- Statistics Cards Row 1 -->
+    <div class="row mb-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card stats-card blue">
+                <div class="stats-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stats-label">Total Students</div>
+                <div class="stats-value">{{ stats.total_students }}</div>
+                <div class="stats-subtitle">Registered in system</div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card stats-card green">
+                <div class="stats-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="stats-label">Total Companies</div>
+                <div class="stats-value">{{ stats.total_companies }}</div>
+                <div class="stats-subtitle">Registered partners</div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card stats-card orange">
+                <div class="stats-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="stats-label">Placement Drives</div>
+                <div class="stats-value">{{ stats.total_drives }}</div>
+                <div class="stats-subtitle">Active opportunities</div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card stats-card purple">
+                <div class="stats-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="stats-label">Applications</div>
+                <div class="stats-value">{{ stats.total_applications }}</div>
+                <div class="stats-subtitle">Total submitted</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pending Actions Row -->
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-clock"></i> Pending Company Approvals
+                </div>
+                <div class="card-body">
+                    <h3 class="text-warning">{{ stats.pending_companies }}</h3>
+                    <p class="text-muted mb-3">Companies awaiting review</p>
+                    <a href="{{ url_for('admin.manage_companies') }}" class="btn btn-primary">
+                        <i class="fas fa-eye"></i> Review Companies
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-clock"></i> Pending Drive Approvals
+                </div>
+                <div class="card-body">
+                    <h3 class="text-warning">{{ stats.pending_drives }}</h3>
+                    <p class="text-muted mb-3">Drives awaiting review</p>
+                    <a href="{{ url_for('admin.manage_drives') }}" class="btn btn-primary">
+                        <i class="fas fa-eye"></i> Review Drives
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-bolt"></i> Quick Actions
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2 d-sm-flex">
+                        <a href="{{ url_for('admin.manage_companies') }}" class="btn btn-outline-success">
+                            <i class="fas fa-building"></i> Manage Companies
+                        </a>
+                        <a href="{{ url_for('admin.manage_students') }}" class="btn btn-outline-success">
+                            <i class="fas fa-users"></i> Manage Students
+                        </a>
+                        <a href="{{ url_for('admin.manage_drives') }}" class="btn btn-outline-success">
+                            <i class="fas fa-briefcase"></i> Manage Drives
+                        </a>
+                        <a href="{{ url_for('admin.view_applications') }}" class="btn btn-outline-success">
+                            <i class="fas fa-file-alt"></i> View Applications
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}Admin Login{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card mt-5">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">🔐 Admin Login</h4>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="mb-3">
+                        {{ form.username.label }}
+                        {{ form.username(class="form-control", placeholder="Username") }}
+                        {% if form.username.errors %}<small class="text-danger">{{ form.username.errors[0] }}</small>{% endif %}
+                    </div>
+                    <div class="mb-3">
+                        {{ form.password.label }}
+                        {{ form.password(class="form-control", placeholder="Password") }}
+                        {% if form.password.errors %}<small class="text-danger">{{ form.password.errors[0] }}</small>{% endif %}
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+                <hr>
+                <div class="alert alert-info mb-0"><small><strong>Demo:</strong> admin / admin123</small></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

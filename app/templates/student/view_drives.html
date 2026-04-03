@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}View Drives{% endblock %}
+{% block content %}
+<h2 class="mb-4">📋 Approved Placement Drives</h2>
+{% for drive in drives.items %}
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <h5>{{ drive.job_title }}</h5>
+                <p class="text-muted">{{ drive.company.company_name }}</p>
+                <p>{{ drive.job_description[:150] }}...</p>
+                <small>💰 {{ drive.salary or 'Not Disclosed' }} | 📍 {{ drive.location or 'TBD' }}</small>
+            </div>
+            <div class="col-md-4 text-end">
+                {% if drive.id in applied_drives %}
+                <span class="badge bg-success">✓ Applied</span>
+                {% else %}
+                <form method="POST" action="{{ url_for('student.apply_for_drive', drive_id=drive.id) }}">
+                    <button type="submit" class="btn btn-primary">Apply</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

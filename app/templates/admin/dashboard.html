@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h2 class="mb-4">📊 Admin Dashboard</h2>
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card dashboard-card bg-light">
+            <h5>Total Students</h5>
+            <h3 class="text-primary">{{ stats.total_students }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card dashboard-card bg-light">
+            <h5>Total Companies</h5>
+            <h3 class="text-success">{{ stats.total_companies }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card dashboard-card bg-light">
+            <h5>Placement Drives</h5>
+            <h3 class="text-info">{{ stats.total_drives }}</h3>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card dashboard-card bg-light">
+            <h5>Applications</h5>
+            <h3 class="text-warning">{{ stats.total_applications }}</h3>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h5>⚠️ Pending Companies</h5>
+            </div>
+            <div class="card-body">
+                <h3>{{ stats.pending_companies }}</h3>
+                <a href="{{ url_for('admin.manage_companies') }}" class="btn btn-sm btn-primary">Review</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h5>⚠️ Pending Drives</h5>
+            </div>
+            <div class="card-body">
+                <h3>{{ stats.pending_drives }}</h3>
+                <a href="{{ url_for('admin.manage_drives') }}" class="btn btn-sm btn-primary">Review</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
